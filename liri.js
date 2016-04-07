@@ -12,9 +12,15 @@ var params = process.argv.slice(2);
 //  if (!error && response.statusCode == 200) {
 //    var result =  JSON.parse(body);
 //    console.log(result.imdbRating);
-//  }
+//     }
+//   }
+// }
 
- function spotifyIt() {
+//  request();
+
+ 
+
+function spotifyIt() {
  spotify.search({ type: 'track', query: params[1] }, function(err, data) {
    if ( err ) {
        console.log('Error occurred: ' + err);
@@ -33,6 +39,17 @@ var params = process.argv.slice(2);
 
 spotifyIt();
 
+
+function tweets () {
+params = {Zelawy: 'nodejs'};
+client.get('statuses/user_timeline', params, function(error, tweets, response){
+  if (!error) {
+    console.log(tweets);
+  }
+})
+}
+
+tweets();
 // switch(action){
 //    case "my-tweets":
 //        Twitter();
