@@ -1,4 +1,4 @@
-// console.log('twitterKeys');
+console.log('twitterKeys');
 
 exports.twitterKeys = {
   consumer_key: 'jMXTDxpZNIIghiUhKLZUy95O2',

@@ -29,9 +29,9 @@ function spotifyIt() {
    else{
    var songInfo = data.tracks.items[0];
    console.log("the artist is", songInfo.artists[0].name);
-   console.log("the song name is", songInfo.name);
-   console.log("the album is called", songInfo.album.name);
-   console.log("here is a preview link", songInfo.preview_url);
+   // console.log("the song name is", songInfo.name);
+   // console.log("the album is called", songInfo.album.name);
+   // console.log("here is a preview link", songInfo.preview_url);
    
    };
  });
@@ -39,17 +39,31 @@ function spotifyIt() {
 
 spotifyIt();
 
-
-function tweets () {
-params = {Zelawy: 'nodejs'};
-client.get('statuses/user_timeline', params, function(error, tweets, response){
-  if (!error) {
-    console.log(tweets);
-  }
-})
+var getTweets = function(){
+    var client = new Twitter(keys.twitterKeys);
+    var params = {screen_name: 'zelaway'};
+    client.get('statuses/user_timeline', params, function(error, tweets, response){
+             if (!error) {
+                 console.log("these are my tweets");
+               console.log(tweets);
+ }
+             
+});
 }
+getTweets();
 
-tweets();
+
+// function tweets () {
+// var client = new Twitter
+// params = {Zelawy: 'nodejs'};
+// client.get('statuses/user_timeline', params, function(error, tweets, response){
+//   if (!error) {
+//     console.log(tweets);
+//   }
+// })
+// }
+
+// tweets();
 // switch(action){
 //    case "my-tweets":
 //        Twitter();
