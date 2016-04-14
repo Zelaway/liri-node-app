@@ -5,7 +5,7 @@ var omdb = require ("omdb");
 var fs = require("fs");
 var request = require('request');
 var params = process.argv.slice(2);
-
+//note to 
 
 // function request(){
 // request = request("http://www.omdbapi.com/?t=" + input[1] + "&y=&plot=short&tomatoes=true&r=json", function (error, response, body) {
