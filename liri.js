@@ -18,26 +18,37 @@ var params = process.argv.slice(2);
 
 //  request();
 
- 
-
-function spotifyIt() {
- spotify.search({ type: 'track', query: params[1] }, function(err, data) {
-   if ( err ) {
-       console.log('Error occurred: ' + err);
-       return;  //from spotify npm docs
-   }
-   else{
-   var songInfo = data.tracks.items[0];
-   console.log("the artist is", songInfo.artists[0].name);
-   // console.log("the song name is", songInfo.name);
-   // console.log("the album is called", songInfo.album.name);
-   // console.log("here is a preview link", songInfo.preview_url);
-   
-   };
- });
+ var getArtistNames = function(artist){
+  return artist.name;
 }
 
-spotifyIt();
+var getMeSpotify = function(songName){
+
+  if (songName === undefined){
+    songName = 'What\'s my age again';
+  }
+   
+  spotify.search({ type: 'track', query: songName }, function(err, data) {
+      if ( err ) {
+          console.log('Error occurred: ' + err);
+          return;
+      }
+    //debugger; //used to find out what's inside data in the iron-node console
+
+      var songs = data.tracks.items;
+
+      for(var i = 0; i < songs.length; i++){
+        console.log(i);
+        console.log('artist(s): ' + songs[i].artists.map(getArtistNames));
+        console.log('song name: ' + songs[i].name);
+        console.log('preview song: ' + songs[i].preview_url);
+        console.log('album: ' + songs[i].album.name);
+        console.log('-----------------------------------');
+      }
+  });
+}
+
+getMeSpotify();
 
 var getTweets = function(){
     var client = new Twitter(keys.twitterKeys);
